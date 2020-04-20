@@ -5,7 +5,7 @@ const Spinner = () => {
   return (
     <Loader
       type="Rings"
-      color="#0E0C29"
+      color="rgb(7, 42, 71)"
       height={100}
       width={100}
       timeout={10000}

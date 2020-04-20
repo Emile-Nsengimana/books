@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import fetchBook from "../helpers/api";
+import { fetchBooks } from "../helpers/api";
 import queryString from "query-string";
 import notFound from "../assets/not-found.png";
 import Spinner from "../components/Spinner";
@@ -11,9 +11,9 @@ const BookContainer = (props) => {
   const location = window.location.href;
   const queryObject = queryString.parse(location);
   const searchKey = queryObject[Object.keys(queryObject)[0]];
-
+  console.log(loading);
   const handleSearch = async () => {
-    const bookList = await fetchBook(searchKey);
+    const bookList = await fetchBooks(searchKey);
     setBooks({
       ...books,
       books: bookList.items,
@@ -37,22 +37,29 @@ const BookContainer = (props) => {
     <>
       {books.books !== undefined ? (
         books.books.map((book) => (
-          <div className="box" key={book.id}>
-            <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
-            <div className="book-details">
-              <ul>
-                <li>
-                  <b>Title:</b> {book.volumeInfo.title}
-                </li>
-                <li>
-                  <b>author(s):</b> {book.volumeInfo.authors}
-                </li>
-                <li>
-                  <b>publisher:</b> {book.volumeInfo.publisher}
-                </li>
-              </ul>
+          <a
+            className="btn-link"
+            target="_blank"
+            href={`/book/preview?bookId=${book.id}`}
+            key={book.id}
+          >
+            <div className="box">
+              <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
+              <div className="book-info">
+                <ul>
+                  <li>
+                    <b>Title:</b> {book.volumeInfo.title}
+                  </li>
+                  <li>
+                    <b>author(s):</b> {book.volumeInfo.authors}
+                  </li>
+                  <li>
+                    <b>publisher:</b> {book.volumeInfo.publisher}
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </a>
         ))
       ) : (
         <div className="not-found">

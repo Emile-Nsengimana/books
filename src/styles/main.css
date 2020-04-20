@@ -16,6 +16,11 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .root-container {
   width: 100%;
   height: 50vh;
@@ -58,7 +63,7 @@ body {
   width: 80%;
   height: 80vh;
   display: grid;
-  grid-template-columns: repeat(3, 32%);
+  grid-template-columns: repeat(4, 25%);
   justify-content: space-around;
   margin: 2rem 10%;
   overflow: auto;
@@ -69,7 +74,7 @@ body {
   box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.7);
   border-radius: 0.7rem;
   overflow: hidden;
-  height: 25rem;
+  height: 30rem;
   margin: 2rem;
 }
 
@@ -79,16 +84,16 @@ body {
   object-fit: cover;
 }
 
-.book-details {
-  padding: 1rem;
+.book-info {
+  padding: 0.4rem;
 }
 
-.book-details ul {
+.book-info ul {
   list-style: none;
   font-size: 1.2rem;
 }
 
-.book-details li {
+.book-info li {
   padding: 0.2rem;
 }
 
@@ -128,4 +133,21 @@ body {
   left: 0;
   bottom: 0;
   width: 100vw;
+}
+
+.btn-link {
+  border: none;
+  outline: none;
+  padding: 0;
+  background-color: transparent;
+  transition: transform 0.2s;
+}
+
+.btn-link:active {
+  outline: none;
+}
+
+.btn-link:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
