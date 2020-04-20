@@ -27,7 +27,6 @@ const BookContainer = props => {
         <div className="box" key={book.id}>
           <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
           <div className="book-details">
-            {console.log(book.volumeInfo.imageLinks)}
             <ul>
               <li><b>Title:</b> {book.volumeInfo.title}</li>
               <li><b>author(s):</b> {book.volumeInfo.authors}</li>

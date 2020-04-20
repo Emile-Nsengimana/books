@@ -1,8 +1,10 @@
 import axios from 'axios';
+import dotenv from "dotenv";
 
+dotenv.config();
  
-const baseUrl = "https://www.googleapis.com/books/v1/volumes";
-const key = "AIzaSyACnKV2EY8FXTOrztEhtniMZa1L9BfUzqg";
+const baseUrl = process.env.REACT_APP_BASE_URL;
+const key = process.env.REACT_APP_API_KEY;
 
 const fetchBook = async (searchKey)=> {
   const request = await axios({
