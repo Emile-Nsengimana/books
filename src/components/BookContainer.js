@@ -1,33 +1,40 @@
-import React from 'react';
-import Book from "../assets/home.jpg";
+import React, { useEffect, useState } from 'react';
+import fetchBook from "../helpers/api";
+import queryString from "query-string";
 
 const BookContainer = props => {
+  const [books, setBooks] = useState([]);
+  const location = window.location.href;
+  const queryObject = queryString.parse(location);
+  const searchKey = queryObject[Object.keys(queryObject)[0]]
+
+  const handleSearch = async () => {
+    const bookList = await fetchBook(searchKey);
+    setBooks({
+      ...books,
+      books: bookList.items,
+    });
+  }
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchKey]);
+
   return (
     <>
-      <div className="box">
-      <img src={Book} alt="" />
-      <div className="book-details">
-        <h5>World war I</h5>
-      </div>
-    </div>
-    <div className="box">
-      <img src={Book} alt="" />
-      <div className="book-details">
-        <h5>World war I</h5>
-      </div>
-    </div>
-    <div className="box">
-      <img src={Book} alt="" />
-      <div className="book-details">
-        <h5>World war I</h5>
-      </div>
-    </div>
-    <div className="box">
-      <img src={Book} alt="" />
-      <div className="book-details">
-        <h5>World war I</h5>
-      </div>
-    </div>
+      {books.books !== undefined ? books.books.map(book => (
+        <div className="box" key={book.id}>
+          <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
+          <div className="book-details">
+           { console.log(book.volumeInfo.imageLinks)}
+            <ul>
+              <li><b>Title:</b> {book.volumeInfo.title}</li>
+              <li><b>author(s):</b> {book.volumeInfo.authors}</li>
+              <li><b>publisher:</b> {book.volumeInfo.publisher}</li>
+            </ul>
+          </div>
+        </div>
+      )) : <h1>Ooops! book not found</h1>}
     </>
   );
 }

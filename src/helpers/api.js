@@ -1,15 +1,13 @@
 import axios from 'axios';
-import dotenv from "dotenv";
 
-dotenv.config();
+ 
+const baseUrl = "https://www.googleapis.com/books/v1/volumes";
+const key = "AIzaSyACnKV2EY8FXTOrztEhtniMZa1L9BfUzqg";
 
-const baseUrl = process.env.BASE_URL;
-const key = process.env.API_KEY;
-
-const fetchBook = async (meth, url) => {
+const fetchBook = async (searchKey)=> {
   const request = await axios({
-    method: meth,
-    url: baseUrl + url + key,
+    method: "GET",
+    url: `${baseUrl}?q=${searchKey}?key=${key}`,
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
     },
@@ -21,4 +19,4 @@ const fetchBook = async (meth, url) => {
   }
 };
 
-export default { fetchBook };
+export default fetchBook;
