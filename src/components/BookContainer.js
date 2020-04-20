@@ -39,7 +39,6 @@ const BookContainer = (props) => {
         books.books.map((book) => (
           <a
             className="btn-link"
-            target="_blank"
             href={`/book/preview?bookId=${book.id}`}
             key={book.id}
           >

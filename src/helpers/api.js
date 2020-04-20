@@ -9,7 +9,7 @@ const key = process.env.REACT_APP_API_KEY;
 export const fetchBooks = async (searchKey) => {
   const request = await axios({
     method: "GET",
-    url: `${baseUrl}?q=${searchKey}?key=${key}`,
+    url: `${baseUrl}?q=${searchKey}&key=${key}`,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
@@ -24,7 +24,7 @@ export const fetchBooks = async (searchKey) => {
 export const getBook = async (searchKey) => {
   const request = await axios({
     method: "GET",
-    url: `${baseUrl}/${searchKey}?key=${key}`,
+    url: `${baseUrl}/${searchKey}&key=${key}`,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
