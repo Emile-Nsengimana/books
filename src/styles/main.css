@@ -56,11 +56,13 @@ body {
 
 .book-container {
   width: 80%;
-  height: 100vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: repeat(3, 32%);
   justify-content: space-around;
   margin: 2rem 10%;
+  overflow: auto;
+  box-sizing: content-box;
 }
 
 .box {
@@ -110,4 +112,20 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.footer {
+  height: 2rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background-color: rgb(9, 39, 63);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  letter-spacing: 0.2rem;
+  padding: 1rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
 }
