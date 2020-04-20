@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import fetchBook from "../helpers/api";
 import queryString from "query-string";
+import notFound from "../assets/not-found.png";
 
 const BookContainer = props => {
   const [books, setBooks] = useState([]);
@@ -26,7 +27,7 @@ const BookContainer = props => {
         <div className="box" key={book.id}>
           <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
           <div className="book-details">
-           { console.log(book.volumeInfo.imageLinks)}
+            {console.log(book.volumeInfo.imageLinks)}
             <ul>
               <li><b>Title:</b> {book.volumeInfo.title}</li>
               <li><b>author(s):</b> {book.volumeInfo.authors}</li>
@@ -34,7 +35,10 @@ const BookContainer = props => {
             </ul>
           </div>
         </div>
-      )) : <h1>Ooops! book not found</h1>}
+      )) : <div className="not-found">
+          <img src={notFound} alt="not found" />
+          <h3>Oops! book not found</h3>
+        </div>}
     </>
   );
 }
