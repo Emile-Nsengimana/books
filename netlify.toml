@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "https://isomero.netlify.app/book/*"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
