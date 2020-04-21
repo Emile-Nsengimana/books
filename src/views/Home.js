@@ -22,7 +22,7 @@ const Home = (props) => {
 
   return (
     <div className="root-container">
-      <img src={wallpaper} alt="women reading a book" />
+      <img src={wallpaper} alt="" />
       <Search onChange={onChange} onSearch={handleSearch} />
     </div>
   );
